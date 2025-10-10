@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'carzcollector.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'carzqcollector',
+        'NAME': 'carszcollector',
     }
 }
 
