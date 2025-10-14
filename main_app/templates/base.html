@@ -20,7 +20,10 @@
       </div>
       <nav>
         <ul>
-          <li><a href="/index">Index</a></li>          
+          <li><a href="/index">Home</a></li>      
+          <li><a href="{% url 'car-index' %}">All Cars</a></li> 
+          <li><a href="{% url 'car-create' %}">Add a Car</a></li>         
+          <li><a href="{% url 'about' %}">About</a></li>    
         </ul>
       </nav>
     </header>

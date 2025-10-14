@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% load static %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{% static 'css/cars/car-index.css' %}"
+/>
+{% endblock %} {% block content %}
+
+<section class="page-header">
+  <h1>Car List</h1>  
+</section>
+
+<section class="card-container">
+  {% for car in cars %}
+    <div class="card">
+      <a href="{% url 'car-detail' car.id %}">
+        <div class="card-content">
+          <div class="card-img-container">
+            <img
+              src="{% static 'images/carz.jpg' %}"
+              alt="Car image"
+              width="30%"
+              height="30%"
+            />
+          </div>
+          <h2 class="card-title">{{ car.comanyName }} {{ car.model }}</h2>          
+          <p>Year:{{ car.year }}</p>
+          <p><small>{{ car.description }}</small></p>
+        </div>
+      </a>
+    </div>
+  {% endfor %}
+</section>
+
+{% endblock %}
