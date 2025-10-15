@@ -2,7 +2,7 @@
 
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Car
+from .models import Car , RentalRecord
 from .forms import RentalRecordForm
 
 # Define the home view function
@@ -35,8 +35,7 @@ class CarCreate(CreateView):
     fields = '__all__'
    
 class CarUpdate(UpdateView):
-    model = Car
-    # Let's disallow the renaming of a cat by excluding the name field!
+    model = Car  
     fields = ['model', 'description', 'year']
 
 class CarDelete(DeleteView):
@@ -47,10 +46,13 @@ def add_rentalrecord(request, car_id):
     # create a ModelForm instance using the data in request.POST
     form = RentalRecordForm(request.POST)
     # validate the form
-    if form.is_valid():
-        # don't save the form to the db until it
-        # has the cat_id assigned
+    if form.is_valid():       
         new_record = form.save(commit=False)
         new_record.car_id = car_id
         new_record.save()
+    return redirect('car-detail', car_id=car_id)
+
+def delete_rentalrecord(request, car_id, record_id):   
+    obj_to_delete = RentalRecord.objects.get(id=record_id)       
+    obj_to_delete.delete()
     return redirect('car-detail', car_id=car_id)

@@ -1,7 +1,7 @@
 from django import forms
 from .models import RentalRecord
 
-class RentalRecordForm(forms.ModelForm):
+class RentalRecordForm(forms.ModelForm):    
     class Meta:
         model = RentalRecord
         fields = ['date', 'person']

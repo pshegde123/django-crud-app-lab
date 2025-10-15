@@ -17,6 +17,7 @@ class Car(models.Model):
         # Use the 'reverse' function to dynamically find the URL for viewing this car's details
         return reverse('car-detail', kwargs={'car_id': self.id})        
 
+
 class RentalRecord(models.Model):
     date = models.DateField('Rental Date')
     person = models.CharField()
@@ -26,7 +27,7 @@ class RentalRecord(models.Model):
 
     def __str__(self):
         # Nice method for obtaining the friendly value of a Field.choice
-        return f"{self.person} on {self.date}"
-    
+        return f"{self.person} on {self.date}"   
+
     class Meta:
         ordering = ['-date']  # This line makes the newest feedings appear first

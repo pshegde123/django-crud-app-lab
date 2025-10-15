@@ -16,4 +16,5 @@ urlpatterns = [
         views.add_rentalrecord, 
         name='add-rentalrecord'
     ),
+    path('cars/<int:car_id>/delete_rentalrecord/<int:record_id>', views.delete_rentalrecord, name='delete_rentalrecord'),
 ]
