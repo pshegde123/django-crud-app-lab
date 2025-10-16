@@ -52,6 +52,32 @@ def add_rentalrecord(request, car_id):
         new_record.save()
     return redirect('car-detail', car_id=car_id)
 
+def show_updaterecord(request, car_id, record_id):        
+    form = RentalRecordForm(request.POST)
+    obj_to_update = RentalRecord.objects.get(id=record_id)       
+    form.person = obj_to_update.person
+    return render(request,'cars/record.html',{'form':form,'car_id':car_id ,'record_id':record_id})
+
+#def update_rentalrecord(request, car_id, record_id):  
+def update_rentalrecord(request, car_id, record_id):  
+    # model = RentalRecord          
+    # return render(request,'cars/index.html')
+    # form = RentalRecordForm(request.POST)
+    # if form.is_valid():       
+    #     new_record = form.save(commit=False)
+    #     new_record.car_id = car_id
+    #     new_record.save()
+    obj_to_update = RentalRecord.objects.get(id=record_id)   
+    form = RentalRecordForm(request.POST) 
+    if form.is_valid():       
+        date = form.cleaned_data['date']
+        person = form.cleaned_data['person']
+        obj_to_update.date = date
+        obj_to_update.person = person
+        obj_to_update.save()
+    return redirect('car-detail', car_id=car_id)
+
+
 def delete_rentalrecord(request, car_id, record_id):   
     obj_to_delete = RentalRecord.objects.get(id=record_id)       
     obj_to_delete.delete()

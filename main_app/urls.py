@@ -16,5 +16,7 @@ urlpatterns = [
         views.add_rentalrecord, 
         name='add-rentalrecord'
     ),
+    path('cars/<int:car_id>/show_updaterecord/<int:record_id>', views.show_updaterecord, name='show_updaterecord'),
+    path('cars/<int:car_id>update_rentalrecord/<int:record_id>', views.update_rentalrecord, name='update_rentalrecord'),
     path('cars/<int:car_id>/delete_rentalrecord/<int:record_id>', views.delete_rentalrecord, name='delete_rentalrecord'),
 ]

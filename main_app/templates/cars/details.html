@@ -46,8 +46,8 @@
             <td>{{record.date}}</td>
             <td>{{record.person}}</td>
             <td>
-              <a href="{% url 'car-update' car.id %}" class="btn warn">Edit</a>
-              <a href="{% url 'delete_rentalrecord' car.id record.id%}" class="btn danger">Delete</a>
+              <a href="{% url 'show_updaterecord' car.id record.id %}" class="btn warn">Edit</a>
+              <a href="{% url 'delete_rentalrecord' car.id record.id %}" class="btn danger">Delete</a>
             </td>
           </tr>
         {% endfor %}
