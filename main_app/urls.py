@@ -2,7 +2,8 @@ from django.urls import path
 from . import views # Import views to connect routes to view functions
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    #path('', views.home, name='home'),
+    path('', views.Home.as_view(), name='home'),
     path('index/', views.index, name='index'),
     path('about/', views.about, name='about'),
     path('details/', views.details, name='details'),
@@ -19,4 +20,5 @@ urlpatterns = [
     path('cars/<int:car_id>/show_updaterecord/<int:record_id>', views.show_updaterecord, name='show_updaterecord'),
     path('cars/<int:car_id>update_rentalrecord/<int:record_id>', views.update_rentalrecord, name='update_rentalrecord'),
     path('cars/<int:car_id>/delete_rentalrecord/<int:record_id>', views.delete_rentalrecord, name='delete_rentalrecord'),
+    path('accounts/signup/', views.signup, name='signup'),
 ]
